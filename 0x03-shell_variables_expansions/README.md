@@ -1,30 +1,80 @@
-0x03. Git
-=========
+0x03. Shell, init files, variables and expansions
+=================================================
 
-Git Code versioning Github
+DevOps Shell Bash
 
 
-### Concepts
+About Bash projects
+-------------------
 
-*For this project, we expect you to look at these concepts:*
-
--   [Right-engineering, right-documenting](https://alx-intranet.hbtn.io/concepts/6)
--   [Source code management](https://alx-intranet.hbtn.io/concepts/22)
--   [Git and Github cheat sheet - Everything in less than 30 seconds](https://alx-intranet.hbtn.io/concepts/57)
+Unless stated, all your projects will be auto-corrected with Ubuntu 20.04 LTS.
 
 Resources
 ---------
 
-**Read or watch:**
+**Read or watch**:
 
--   [Resources to learn Git](https://alx-intranet.hbtn.io/rltoken/YtcpriOT-x-WiyScwLpn4Q "Resources to learn Git")
--   [About READMEs](https://alx-intranet.hbtn.io/rltoken/R7MeJ8alpK3JoVF8w24wiQ "About READMEs")
--   [How to write a Git commit message](https://alx-intranet.hbtn.io/rltoken/FYsjjR-97Hk4NJtgqzWdtQ "How to write a Git commit message")
+-   [Expansions](https://alx-intranet.hbtn.io/rltoken/oXnzBjLBA9t9dr7WuftdmQ "Expansions")
+-   [Shell Arithmetic](https://alx-intranet.hbtn.io/rltoken/PLSUQnBcKKU5eEgRfRDlug "Shell Arithmetic")
+-   [Variables](https://alx-intranet.hbtn.io/rltoken/SvdGNZJjKsPghzZEhaWu4Q "Variables")
+-   [Shell initialization files](https://alx-intranet.hbtn.io/rltoken/tqud57kjsSYgDfeZDlwl3g "Shell initialization files")
+-   [The alias Command](https://alx-intranet.hbtn.io/rltoken/zCemKQ8f1CxmODIs9dmcWg "The alias Command")
+-   [Technical Writing](https://alx-intranet.hbtn.io/rltoken/wYrZr3t3DeAE8PpYHYWGiw "Technical Writing")
 
-**Resources for advanced tasks** (Read only after finishing the mandatory tasks):
+**man or help**:
 
--   [Learning branching](https://alx-intranet.hbtn.io/rltoken/tN8ZJ0yWubOP6jdciqtrFw "Learning branching")
--   [Effective pull requests and other good practices for teams using GitHub](https://alx-intranet.hbtn.io/rltoken/mjpQ9OCU0Dz-DFxZjASEJg "Effective pull requests and other good practices for teams using GitHub")
+-   `printenv`
+-   `set`
+-   `unset`
+-   `export`
+-   `alias`
+-   `unalias`
+-   `.`
+-   `source`
+-   `printf`
+
+Learning Objectives
+-------------------
+
+At the end of this project, you are expected to be able to [explain to anyone](https://alx-intranet.hbtn.io/rltoken/d8LWxAXk9_gsvpPw3ICdwQ "explain to anyone"), **without the help of Google**:
+
+### General
+
+-   What happens when you type `$ ls -l *.txt`
+
+### Shell Initialization Files
+
+-   What are the `/etc/profile` file and the `/etc/profile.d` directory
+-   What is the `~/.bashrc` file
+
+### Variables
+
+-   What is the difference between a local and a global variable
+-   What is a reserved variable
+-   How to create, update and delete shell variables
+-   What are the roles of the following reserved variables: HOME, PATH, PS1
+-   What are special parameters
+-   What is the special parameter `$?`?
+
+### Expansions
+
+-   What is expansion and how to use them
+-   What is the difference between single and double quotes and how to use them properly
+-   How to do command substitution with `$()` and backticks
+
+### Shell Arithmetic
+
+-   How to perform arithmetic operations with the shell
+
+### The `alias` Command
+
+-   How to create an alias
+-   How to list aliases
+-   How to temporarily disable an alias
+
+### Other `help` pages
+
+-   How to execute commands from a file in the current shell
 
 
 
@@ -33,285 +83,551 @@ Requirements
 
 ### General
 
--   A `README.md` file at the root of the `alx-zero_day` repo, containing a description of the repository
--   A `README.md` file, at the root of the folder of *this* project (i.e. `0x03-git`), describing what this project is about
--   **Do not use GitHub's web UI**, but the command line to perform the exercise (except for operations that can not possibly be done any other way than through the web UI). You won't be able to perform many of the task requirements on the web UI, and you should start getting used to the command line for simple tasks because many complex tasks can only be done via the command line.
--   Your answer files should only contain the command, and nothing else
+-   Allowed editors: `vi`, `vim`, `emacs`
+-   All your scripts will be tested on Ubuntu 20.04 LTS
+-   All your scripts should be exactly two lines long (`$ wc -l file` should print 2)
+-   All your files should end with a new line ([why?](http://unix.stackexchange.com/questions/18743/whats-the-point-in-adding-a-new-line-to-the-end-of-a-file/18789))
+-   The first line of all your files should be exactly `#!/bin/bash`
+-   A `README.md` file, at the root of the folder of the project, describing what each script is doing
+-   You are not allowed to use `&&`, `||` or `;`
+-   You are not allowed to use `bc`, `sed` or `awk`
+-   All your files must be executable
 
 More Info
 ---------
 
-### Basic usage
+Read your `/etc/profile`, `/etc/inputrc` and `~/.bashrc` files.
 
-At the end of this project you should be able to reproduce and understand these command lines:
+Look at some files in the `/etc/profile.d` directory.
 
-```
-$ git clone <repo>
-$ touch test
-$ git add test
-$ git commit -m "Initial commit"
-$ git push origin main
-
-```
+Note: You do not have to learn about `awk`, `tar`, `bzip2`, `date`, `scp`, `ulimit`, `umask`, or shell scripting, yet.
 
 
 Tasks
 -----
 
-### 0\. Create and setup your Git and GitHub account
+### 0\. <o>
 
 
-#### Step 0 - Create an account on GitHub [if you do not have one already]
+Create a script that creates an alias.
 
-You will need a GitHub account for all your projects at ALX. If you do not already have a github.com account, you can create an account for free [here](https://alx-intranet.hbtn.io/rltoken/1vpH3ScWYjfgZD0J59jusA "here")
-
-#### Step 1 - Create a Personal Access Token on Github
-
-To have access to your repositories and authenticate yourself, you need to create a Personal Access Token on Github.
-
-You can follow [this tutorial](https://alx-intranet.hbtn.io/rltoken/ArBVmv-Vj5ZsEnOutGy41A "this tutorial") to create a token.
-
-Once it's created, you should have a token that looks like this:
-
-![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2022/2/a449483cd76a72cef1b42df831e686c64faa1cf6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20221023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221023T094652Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=375e1c62bf71124332837e7f33045c6079d0649f726f1aafd76e041fc1d0d5b2)
-
-#### Step 2 - Update your profile on the Intranet
-
-Update your Intranet profile by adding your Github username [here](https://alx-intranet.hbtn.io/rltoken/9dthiwx9AyxxUzV_QPIRWQ "here")
-
-If it's not done **the Checker won't be able to correct your work**
-
-![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2022/2/6270480a0a982cd1846b877eda2ee405d2e8f575.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20221023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221023T094652Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=ad2f0b1d0762c29a3efb2a5f26d26bae25a66b64e912e4b1f2d954b6dd01c90c)
-
-#### Step 3 - Create your first repository
-
-Using the graphic interface on the [github website](https://alx-intranet.hbtn.io/rltoken/1vpH3ScWYjfgZD0J59jusA "github website"), create your first repository.
-
--   Name: `alx-zero_day`
--   Description: `I'm now a ALX Student, this is my first repository as a full-stack engineer`
--   Public repo
--   No `README`, `.gitignore`, or license
-
-![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2022/2/2340a2d0f7c74b5dd6f8fc2aa58f94d13ea2c775.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20221023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221023T094652Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=34663b3d955ebdb1060807aff8b925ece495ee385f49da84879671cf9e315084)
-
-#### Step 4 - Open the sandbox
-
-On the intranet, just under the task, click on the button ![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2022/2/9db8eece71455dfddf4b7d8585c037c535f1d18d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20221023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221023T094652Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d90a78c96990efdb0f72aa15bc5c353fb839a165f3562657c22b2bc6a93636a5) and `run` to start the machine.
-
-Once the container is started, click on ![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2022/2/be9d1fbfb3d97e6924a4d2af7df9290ad7ae77df.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20221023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221023T094652Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=02685d6faaa83149e3be5085f13c4fa81512ea11032a78f785c5a18d6e65b872) to open a shell where you can start work from.
-
-#### Step 5 - Clone your repository
-
-On the webterm of the sandbox, do the following:
-
--   Clone your repository
+-   Name: `ls`
+-   Value: `rm *`
 
 ```
-root@896cf839cf9a:/# git clone https://{YOUR_PERSONAL_TOKEN}@github.com/{YOUR_USERNAME}/alx-zero_day.git
-Cloning into 'alx-zero_day'...
-warning: You appear to have cloned an empty repository.
+julien@ubuntu:/tmp/0x03$ ls
+0-alias  file1  file2
+julien@ubuntu:/tmp/0x03$ source ./0-alias
+julien@ubuntu:/tmp/0x03$ ls
+julien@ubuntu:/tmp/0x03$ \ls
+julien@ubuntu:/tmp/0x03$
 
 ```
-
-**Replace {YOUR_PERSONAL_TOKEN} with your token from step 1**
-
-**Replace {YOUR_USERNAME} with your username from step 0 and 1**
-
-**Pro-Tip:** On windows, use CTRL + A + V to paste in the web terminal
-
-#### Step 6 - Create the README.md and push the modifications
-
--   Navigate to this new directory. [Tips](https://alx-intranet.hbtn.io/rltoken/qSP5HcBSSIL0U23PdIGKLw "Tips")
-
-```
-root@896cf839cf9a:/# cd alx-zero_day/
-root@896cf839cf9a:/alx-zero_day#
-
-```
-
--   Create the file `README.md` with the content `My first readme`. [Tips](https://alx-intranet.hbtn.io/rltoken/_SSotigVtvVNThTVLJKZPQ "Tips")
-
-```
-root@896cf839cf9a:/alx-zero_day# echo 'My first readme' > README.md
-root@896cf839cf9a:/alx-zero_day# cat README.md
-My first readme
-
-```
-
--   Update your git identity
-
-```
-root@896cf839cf9a:/alx-pre_course# git config --global user.email "you@example.com"
-root@896cf839cf9a:/alx-pre_course# git config --global user.name "Your Name"
-
-```
-
--   Add this new file to git, commit the change with this message "My first commit" and push to the remote server / origin
-
-```
-root@896cf839cf9a:/alx-zero_day# git add .
-root@896cf839cf9a:/alx-zero_day# git commit -m 'My first commit'
-[master (root-commit) 98eef93] My first commit
- 1 file changed, 1 insertion(+)
- create mode 100644 README.md
-root@896cf839cf9a:/alx-zero_day# git push
-Enumerating objects: 3, done.
-Counting objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 212 bytes | 212.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/{YOUR_USERNAME}/alx-zero_day.git
- * [new branch]      master -> master
-
-```
-
-Good job!
-
-You pushed your first file in your **first repository** of the **first task** of your **first ALX School project**.
-
-You can now check your repository on GitHub to see if everything is good.
 
 **Repo:**
 
--   GitHub repository: `alx-zero_day`
--   File: `README.md`
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `0-alias`
 
  Done! Help Check your code Get a sandbox QA Review
 
-### 1\. Repo-session
-
-Create a new directory called `0x03-git` in your `alx-zero_day` repo.
-
-Make sure you include a not empty `README.md` in your directory:
-
--   at the root of your repository `alx-zero_day`
--   AND in the directory `0x03-git`
-
-And important part: **Make sure your commit and push your code to Github - otherwise the Checker will always fail.**
-
-**Repo:**
-
--   GitHub repository: `alx-zero_day`
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 2\. Coding fury road
-
-
-For the moment we have an empty project directory containing only a `README.md`. It's time to code!
-
--   Create these directories at the root of your project: `bash`, `c`, `js`
--   Create these empty files:
-    -   `c/c_is_fun.c`
-    -   `js/main.js`
-    -   `js/index.js`
--   Create a file `bash/alx` with these two lines inside: `#!/bin/bash` and `echo "ALX"`
--   Create a file `bash/school` with these two lines inside: `#!/bin/bash` and `echo "School"`
--   Add all these new files to git
--   Commit your changes (message: "Starting to code today, so cool") and push to the remote server
-
-**Repo:**
-
--   GitHub repository: `alx-zero_day`
--   Directory: `0x03-git`
--   File: `bash/alx, bash/school, c/c_is_fun.c, js/main.js, js/index.js`
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 3\. Collaboration is the base of a company
+### 1\. Hello you
 
 
 
-A branch is like a copy of your project. It's used mainly for:
-
--   adding a feature in development
--   collaborating on the same project with other developers
--   not breaking your entire repository
--   not upsetting your co-workers
-
-The purpose of a branch is to isolate your work from the main code base of your project and/or from your co-workers' work.
-
-For this project, create a branch `update_script` and in this branch:
-
--   Create an empty file named `bash/98`
--   Update `bash/alx` by replacing `echo "ALX"` with `echo "ALX School"`
--   Update `bash/school` by replacing `echo "School"` with `echo "The school is open!"`
--   Add and commit these changes (message: "My personal work")
--   Push this new branch [Tips](https://alx-intranet.hbtn.io/rltoken/tN31xFfDVctixZZ350tDGw "Tips")
-
-Perfect! You did an amazing update in your project and it's isolated correctly from the **main** branch.
-
-Ho wait, your manager needs a quick fix in your project and it needs to be deployed now:
-
--   Change branch to `main`
--   Update the file `bash/alx` by replacing `echo "ALX"` with `echo "ALX School is so cool!"`
--   Delete the directory `js`
--   Commit your changes (message: "Hot fix") and push to the origin
-
-Ouf, hot fix is done!
-
-**Repo:**
-
--   GitHub repository: `alx-zero_day`
--   Directory: `0x03-git`
--   File: `bash/alx, bash/school, bash/98`
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 4\. Collaboration: be up to date
-
-
-Of course, you can also work on the same branch as your co-workers and it's best if you keep up to date with their changes.
-
-For this task -- **and only for this task** -- please update your file `README.md` in the main branch from GitHub.com. It's the **only time** you are allowed to update and commit from GitHub interface.
-
-After you have done that, in your terminal:
-
--   Get all changes of the main branch locally (i.e. your `README.md` file will be updated)
--   Create a new file `up_to_date` at the root of your directory and in it, write the git command line used
--   Add `up_to_date` to git, commit (message: "How to be up to date in git"), and push to the origin
-
-**Repo:**
-
--   GitHub repository: `alx-zero_day`
--   Directory: `0x03-git`
--   File: `README.md, up_to_date`
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 5\. HAAA what did you do???
-
-
-Collaboration is cool, but not really when you update the same file at the same time...
-
-To illustrate that, please merge the branch `update_script` to `main`: "Cool, all my changes will be now part of the main branch, ready to be deployed!"
-
-**HHHHHHHAAAAAAAA**
+Create a script that prints `hello user`, where user is the current Linux user.
 
 ```
-CONFLICT (content): Merge conflict in bash/alx
+julien@ubuntu:/tmp/0x03$ id
+uid=1000(julien) gid=1000(julien) groups=1000(julien),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),113(lpadmin),128(sambashare)
+julien@ubuntu:/tmp/0x03$ ./1-hello_you
+hello julien
+julien@ubuntu:/tmp/0x03$
 
 ```
 
-As you can see, you have conflicts between two branches on the same file.
-
-Your goal now is to resolve conflicts by using the version of the branch `update_script`, and push the result to the origin.
-
-At the end, you should have all your work from the branch `update_script` (new file and two updated files) and all latest `main` commits (new files, delete folder, etc.), *without* conflicts.
-
 **Repo:**
 
--   GitHub repository: `alx-zero_day`
--   Directory: `0x03-git`
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `1-hello_you`
 
  Done! Help Check your code Get a sandbox QA Review
 
-### 6\. Never push too much
+### 2\. The path to success is to take massive, determined action
 
 
-Create a `.gitignore` file and define a rule to never push `~` files (generated by Emacs). [Tips](https://alx-intranet.hbtn.io/rltoken/sEKIVnR2lEL0sN4jc26hhA "Tips")
+Add `/action` to the `PATH`. `/action` should be the last directory the shell looks into when looking for a program.
+
+```
+julien@ubuntu:/tmp/0x03$ echo $PATH
+/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+julien@ubuntu:/tmp/0x03$ source ./2-path
+julien@ubuntu:/tmp/0x03$ echo $PATH
+/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/action
+julien@ubuntu:/tmp/0x03$
+
+```
 
 **Repo:**
 
--   GitHub repository: `alx-zero_day`
--   Directory: `0x03-git`
--   File: `.gitignore`
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `2-path`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 3\. If the path be beautiful, let us not ask where it leads
+
+
+Create a script that counts the number of directories in the `PATH`.
+
+```
+julien@ubuntu:/tmp/0x03$ echo $PATH
+/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+julien@ubuntu:/tmp/0x03$ . ./3-paths
+11
+julien@ubuntu:/tmp/0x03$ PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:::::/hello
+julien@ubuntu:/tmp/0x03$ . ./3-paths
+12
+julien@ubuntu:/tmp/0x03$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `3-paths`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 4\. Global variables
+
+
+
+Create a script that lists environment variables.
+
+```
+julien@ubuntu:/tmp/0x03$ source ./4-global_variables
+CC=gcc
+CDPATH=.:~:/usr/local:/usr:/
+CFLAGS=-O2 -fomit-frame-pointer
+COLORTERM=gnome-terminal
+CXXFLAGS=-O2 -fomit-frame-pointer
+DISPLAY=:0
+DOMAIN=hq.garrels.be
+e=
+TOR=vi
+FCEDIT=vi
+FIGNORE=.o:~
+G_BROKEN_FILENAMES=1
+GDK_USE_XFT=1
+GDMSESSION=Default
+GNOME_DESKTOP_SESSION_ID=Default
+GTK_RC_FILES=/etc/gtk/gtkrc:/nethome/franky/.gtkrc-1.2-gnome2
+GWMCOLOR=darkgreen
+GWMTERM=xterm
+HISTFILESIZE=5000
+history_control=ignoredups
+HISTSIZE=2000
+HOME=/nethome/franky
+HOSTNAME=octarine.hq.garrels.be
+INPUTRC=/etc/inputrc
+IRCNAME=franky
+JAVA_HOME=/usr/java/j2sdk1.4.0
+LANG=en_US
+LDFLAGS=-s
+LD_LIBRARY_PATH=/usr/lib/mozilla:/usr/lib/mozilla/plugins
+LESSCHARSET=latin1
+LESS=-edfMQ
+LESSOPEN=|/usr/bin/lesspipe.sh %s
+LEX=flex
+LOCAL_MACHINE=octarine
+LOGNAME=franky
+[...]
+julien@ubuntu:/tmp/0x03$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `4-global_variables`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 5\. Local variables
+
+
+Create a script that lists all local variables and environment variables, and functions.
+
+```
+julien@ubuntu:/tmp/0x03$ . ./5-local_variables
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extglob:extquote:force_fignore:histappend:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_COMPLETION_COMPAT_DIR=/etc/bash_completion.d
+BASH_LINENO=()
+BASH_REMATCH=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="4" [1]="3" [2]="46" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='4.3.46(1)-release'
+CLUTTER_IM_MODULE=xim
+COLUMNS=133
+COMPIZ_CONFIG_PROFILE=ubuntu
+COMP_WORDBREAKS=$' \t\n"\'><=;|&(:'
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-Fg27Lr20bq
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+DESKTOP_SESSION=ubuntu
+[...]
+julien@ubuntu:/tmp/0x03$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `5-local_variables`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 6\. Local variable
+
+Create a script that creates a new local variable.
+
+-   Name: `BEST`
+-   Value: `School`
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `6-create_local_variable`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 7\. Global variable
+
+
+Create a script that creates a new global variable.
+
+-   Name: `BEST`
+-   Value: `School`
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `7-create_global_variable`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 8\. Every addition to true knowledge is an addition to human power
+
+Write a script that prints the result of the addition of 128 with the value stored in the environment variable `TRUEKNOWLEDGE`, followed by a new line.
+
+```
+julien@production-503e7013:~$ export TRUEKNOWLEDGE=1209
+julien@production-503e7013:~$ ./8-true_knowledge | cat -e
+1337$
+julien@production-503e7013:~$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `8-true_knowledge`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 9\. Divide and rule
+
+Write a script that prints the result of `POWER` divided by `DIVIDE`, followed by a new line.
+
+-   `POWER` and `DIVIDE` are environment variables
+
+```
+julien@production-503e7013:~$ export POWER=42784
+julien@production-503e7013:~$ export DIVIDE=32
+julien@production-503e7013:~$ ./9-divide_and_rule | cat -e
+1337$
+julien@production-503e7013:~$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `9-divide_and_rule`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 10\. Love is anterior to life, posterior to death, initial of creation, and the exponent of breath
+
+
+Write a script that displays the result of `BREATH` to the power `LOVE`
+
+-   `BREATH` and `LOVE` are environment variables
+-   The script should display the result, followed by a new line
+
+```
+julien@production-503e7013:~/$ export BREATH=4
+julien@production-503e7013:~/$ export LOVE=3
+julien@production-503e7013:~/$ ./10-love_exponent_breath
+64
+julien@production-503e7013:~/$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `10-love_exponent_breath`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 11\. There are 10 types of people in the world -- Those who understand binary, and those who don't
+
+
+
+Write a script that converts a number from base 2 to base 10.
+
+-   The number in base 2 is stored in the environment variable `BINARY`
+-   The script should display the number in base 10, followed by a new line
+
+```
+julien@production-503e7013:~/$ export BINARY=10100111001
+julien@production-503e7013:~/$ ./11-binary_to_decimal
+1337
+julien@production-503e7013:~/$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `11-binary_to_decimal`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 12\. Combination
+
+
+Create a script that prints all possible combinations of two letters, except `oo`.
+
+-   Letters are lower cases, from `a` to `z`
+-   One combination per line
+-   The output should be alpha ordered, starting with `aa`
+-   Do not print `oo`
+-   Your script file should contain maximum 64 characters
+
+```
+julien@ubuntu:/tmp/0x03$ echo $((26 ** 2 -1))
+675
+julien@ubuntu:/tmp/0x03$ ./12-combinations | wc -l
+675
+julien@ubuntu:/tmp/0x03$
+julien@ubuntu:/tmp/0x03$ ./12-combinations | tail -303 | head -10
+oi
+oj
+ok
+ol
+om
+on
+op
+oq
+or
+os
+julien@ubuntu:/tmp/0x03$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `12-combinations`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 13\. Floats
+
+
+Write a script that prints a number with two decimal places, followed by a new line.
+
+The number will be stored in the environment variable `NUM`.
+
+```
+ubuntu@ip-172-31-63-244:~/0x03$ export NUM=0
+ubuntu@ip-172-31-63-244:~/0x03$ ./13-print_float
+0.00
+ubuntu@ip-172-31-63-244:~/0x03$ export NUM=98
+ubuntu@ip-172-31-63-244:~/0x03$ ./13-print_float
+98.00
+ubuntu@ip-172-31-63-244:~/0x03$ export NUM=3.14159265359
+ubuntu@ip-172-31-63-244:~/0x03$ ./13-print_float
+3.14
+ubuntu@ip-172-31-63-244:~/0x03$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `13-print_float`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 14\. Decimal to Hexadecimal
+
+
+
+Write a script that converts a number from base 10 to base 16.
+
+-   The number in base 10 is stored in the environment variable `DECIMAL`
+-   The script should display the number in base 16, followed by a new line
+
+```
+julien@production-503e7013:~/$ export DECIMAL=16
+julien@production-503e7013:~/$ ./100-decimal_to_hexadecimal
+10
+julien@production-503e7013:~/$ export DECIMAL=1337
+julien@production-503e7013:~/$ ./100-decimal_to_hexadecimal | cat -e
+539$
+julien@production-503e7013:~/$ export DECIMAL=15
+julien@production-503e7013:~/$ ./100-decimal_to_hexadecimal | cat -e
+f$
+julien@production-503e7013:~/$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `100-decimal_to_hexadecimal`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 15\. Everyone is a proponent of strong encryption
+
+
+
+Write a script that encodes and decodes text using the rot13 encryption. Assume ASCII.
+
+```
+julien@production-503e7013:~/shell/fun_with_the_shell$ cat quote
+"Everyone is a proponent of strong encryption."
+- Dorothy E. Denning
+julien@production-503e7013:~/shell/fun_with_the_shell$ ./101-rot13 < quote
+"Rirelbar vf n cebcbarag bs fgebat rapelcgvba."
+- Qbebgul R. Qraavat
+julien@production-503e7013:~/shell/fun_with_the_shell$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `101-rot13`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 16\. The eggs of the brood need to be an odd number
+
+Write a script that prints every other line from the input, starting with the first line.
+
+```
+ubuntu@ip-172-31-63-244:/$ \ls -1
+bin
+boot
+dev
+etc
+home
+initrd.img
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+t
+#t#
+t~
+tmp
+usr
+var
+vmlinuz
+whoareyou
+ubuntu@ip-172-31-63-244:/$ \ls -1 | ./102-odd
+bin
+dev
+home
+lib
+lib64
+lost+found
+mnt
+proc
+run
+srv
+t
+t~
+usr
+vmlinuz
+ubuntu@ip-172-31-63-244:/$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `102-odd`
+
+ Done! Help Check your code Get a sandbox QA Review
+
+### 17\. I'm an instant star. Just add water and stir.
+
+
+Write a shell script that adds the two numbers stored in the environment variables `WATER` and `STIR` and prints the result.
+
+-   `WATER` is in base `water`
+-   `STIR` is in base `stir.`
+-   The result should be in base `bestchol`
+
+```
+julien@production-503e7013:~$ export WATER="ewwatratewa"
+julien@production-503e7013:~$ export STIR="ti.itirtrtr"
+julien@production-503e7013:~$ ./103-water_and_stir
+shtbeolhc
+julien@production-503e7013:~$
+
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x03-shell_variables_expansions`
+-   File: `103-water_and_stir`

@@ -1,115 +1,118 @@
-0x01. Emacs
-===========
-
-Shell Editor
+0x01. Shell, permissions
+========================
 
 
-### Concepts
+About Bash projects
+-------------------
 
-*For this project, we expect you to look at these concepts:*
-
--   [Shell](https://alx-intranet.hbtn.io/concepts/9)
--   [Using Emacs as editor](https://alx-intranet.hbtn.io/concepts/54)
--   [The Framework](https://alx-intranet.hbtn.io/concepts/559)
-
-
+Unless stated, all your projects will be auto-corrected with Ubuntu 20.04 LTS.
 
 Resources
 ---------
 
 **Read or watch**:
 
--   [A Guided Tour of Emacs](https://alx-intranet.hbtn.io/rltoken/DdHY8IFvykhK9KOLKTPLVg "A Guided Tour of Emacs")
+-   [Permissions](https://alx-intranet.hbtn.io/rltoken/aQmRB6ms-SDHUhqY0Rsa3g "Permissions")
+
+**man or help**:
+
+-   `chmod`
+-   `sudo`
+-   `su`
+-   `chown`
+-   `chgrp`
+-   `id`
+-   `groups`
+-   `whoami`
+-   `adduser`
+-   `useradd`
+-   `addgroup`
 
 
-Requirements
-------------
 
--   All tasks **must be** done inside the sandbox `Ubuntu 20.04`
--   Your sandbox **must be available at the end of this project** - the Checker will access to it at midnight for running the correction!
--   The answer of a task must be in a specific file
--   Each answer file must contain only the command to execute in Emacs for solving the task. Example: "What is the command to write buffer to a specified file?" -> the file should contain only `C-x C-w`
+Create a script that switches the current user to the user `betty`.
 
-Tasks
------
-
-### 0\. Create your answer directory
-
-
-
-Navigate to `/root` and create a directory named `0x01_emacs`
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 1\. Opening
-
-
-What is the command to open a file from within Emacs?
-
-Write the answer into the file `/root/0x01_emacs/opening`.
-
-You can validate if the format of your answer is correct by displaying the file information:
+-   You should use exactly 8 characters for your command (+1 character for the new line)
+-   You can assume that the user `betty` will exist when we will run your script
 
 ```
-root@hex:~# ls -l /root/0x01_emacs/opening
--rw-r--r-- 1 root root 9 Nov 11 04:34 /root/0x01_emacs/opening
-root@hex:~#
+julien@ubuntu:/tmp/h$ tail -1 0-iam_betty | wc -c
+9
+julien@ubuntu:/tmp/h$
 
 ```
 
- Done! Help Check your code Get a sandbox QA Review
+**Repo:**
 
-### 2\. Saving
-
-
-What is the command to save a file?
-
-Write the answer into the file `/root/0x01_emacs/saving`.
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x01-shell_permissions`
+-   File: `0-iam_betty`
 
  Done! Help Check your code Get a sandbox QA Review
 
-### 3\. Cutting
+### 1\. Who am I
 
 
+Write a script that prints the effective username of the current user.
 
-What is the command to cut an entire line?
+```
+julien@ubuntu:/tmp/h$ ./1-who_am_i
+julien
+julien@ubuntu:/tmp/h$
 
-Write the answer into the file `/root/0x01_emacs/cutting`.
+```
 
- Done! Help Check your code Get a sandbox QA Review
+**Repo:**
 
-### 4\. Pasting
-
-
-What is the command to paste?
-
-Write the answer into the file `/root/0x01_emacs/pasting`.
-
- Done! Help Check your code Get a sandbox QA Review
-
-### 5\. Searching
-
-
-
-What is the command to search forward?
-
-Write the answer into the file `/root/0x01_emacs/searching`.
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x01-shell_permissions`
+-   File: `1-who_am_i`
 
  Done! Help Check your code Get a sandbox QA Review
 
-### 6\. Undoing
+### 2\. Groups
 
 
 
-What is the command to undo?
+Write a script that prints all the groups the current user is part of.
 
-Write the answer into the file `/root/0x01_emacs/undoing`.
+```
+julien@ubuntu:/tmp/h$ ./2-groups
+julien adm cdrom sudo dip plugdev lpadmin sambashare
+julien@ubuntu:/tmp/h$
+
+```
+
+Note: depending on the user, you will get a different output.
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x01-shell_permissions`
+-   File: `2-groups`
 
  Done! Help Check your code Get a sandbox QA Review
 
-### 7\. Quitting
+### 3\. New owner
 
+Write a script that changes the owner of the file `hello` to the user `betty`.
 
-What is the command to quit Emacs?
+```
+julien@ubuntu:/tmp/h$ ls -l
+total 4
+-rwxrw-r-- 1 julien julien 30 Sep 20 14:23 3-new_owner
+-rw-rw-r-- 1 julien julien  0 Sep 20 14:18 hello
+julien@ubuntu:/tmp/h$ sudo ./3-new_owner
+julien@ubuntu:/tmp/h$ ls -l
+total 4
+-rwxrw-r-- 1 julien julien 30 Sep 20 14:23 3-new_owner
+-rw-rw-r-- 1 betty  julien  0 Sep 20 14:18 hello
+julien@ubuntu:/tmp/h$
 
-Write the answer into the file `/root/0x01_emacs/quitting`.
+```
+
+**Repo:**
+
+-   GitHub repository: `alx-system_engineering-devops`
+-   Directory: `0x01-shell_permissions`
+-   File: `3-new_owner`

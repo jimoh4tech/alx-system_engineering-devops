@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Prints listenign ports with their PID and names
+
+netstat -l --program
